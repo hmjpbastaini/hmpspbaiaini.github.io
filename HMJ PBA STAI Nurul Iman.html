@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organisasi Kami</title>
+    <style>
+        /* CSS Global */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .page {
+            display: none;
+            padding: 60px 0;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-top: 40px;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/1200x600/?organization') center/cover no-repeat;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero h1::after {
+            display: none;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-light {
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-photo {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .member-position {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .division {
+            margin-bottom: 50px;
+        }
+        
+        .division-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .division-head {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .activity-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .activity-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .activity-content {
+            padding: 20px;
+        }
+        
+        .activity-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .team-grid, .activities-grid, .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 1.5rem;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+            }
+            
+            nav.active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo" onclick="showPage('index')">Profil<span> HMJ PBA STAI NURUL IMAN</span></a>
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#" class="active" onclick="showPage('index')">Beranda</a></li>
+                    <li><a href="#" onclick="showPage('tentang')">Tentang</a></li>
+                    <li><a href="#" onclick="showPage('struktur')">Struktur</a></li>
+                    <li><a href="#" onclick="showPage('kegiatan')">Kegiatan</a></li>
+                    <li><a href="#" onclick="showPage('berita')">Berita</a></li>
+                    <li><a href="#" onclick="showPage('feedback')">Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Halaman Beranda -->
+    <section id="index" class="page active">
+        <div class="hero">
+            <div class="container hero-content">
+                <h1>Selamat Datang di Profil HMJ PBA STAI NURUL IMAN</h1>
+                <p>HMJ PBA STAI NURUL IMAN adalah Organisasi Mahasiswa yang menaungi Mahasiswa Prodi Pendidikan Bahasa Arab di STAI NURUL IMAN Parung-Bogor.</p>
+                <a href="#" class="btn" onclick="showPage('tentang')">Pelajari Lebih Lanjut</a>
+            </div>
+        </div>
+        
+        <div class="section section-light">
+            <div class="container">
+                <h2>Aktivitas Terkini</h2>
+                <div class="activities-grid">
+                    <div class="activity-card">
+                        <img src="https://source.unsplash.com/random/600x400/?meeting" alt="Kegiatan" class="activity-image">
+                        <div class="activity-content">
+                            <div class="activity-date">15 Juni 2023</div>
+                            <h3>Rapat Koordinasi Bulanan</h3>
+                            <p>Rapat koordinasi bulanan membahas program kerja untuk bulan depan dan evaluasi kegiatan bulan ini.</p>
+                            <a href="#" class="btn btn-outline" onclick="showPage('kegiatan')">Detail Kegiatan</a>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <img src="https://source.unsplash.com/random/600x400/?volunteer" alt="Kegiatan" class="activity-image">
+                        <div class="activity-content">
+                            <div class="activity-date">10 Juni 2023</div>
+                            <h3>Kegiatan Sosial</h3>
+                            <p>Kegiatan bakti sosial di daerah terpencil memberikan bantuan sembako dan pemeriksaan kesehatan gratis.</p>
+                            <a href="#" class="btn btn-outline" onclick="showPage('kegiatan')">Detail Kegiatan</a>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <img src="https://source.unsplash.com/random/600x400/?training" alt="Kegiatan" class="activity-image">
+                        <div class="activity-content">
+                            <div class="activity-date">5 Juni 2023</div>
+                            <h3>Pelatihan Kepemimpinan</h3>
+                            <p>Pelatihan kepemimpinan untuk anggota baru dengan materi manajemen tim dan penyelesaian masalah.</p>
+                            <a href="#" class="btn btn-outline" onclick="showPage('kegiatan')">Detail Kegiatan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="container">
+                <h2>Berita Terbaru</h2>
+                <div class="news-grid">
+                    <div class="news-card">
+                        <img src="https://source.unsplash.com/random/600x400/?event" alt="Berita" class="news-image">
+                        <div class="news-content">
+                            <div class="news-date">12 Juni 2023</div>
+                            <h3>Organisasi Kami Meraih Penghargaan</h3>
+                            <p>Organisasi kami mendapatkan penghargaan sebagai organisasi teraktif tahun 2023 dari pemerintah daerah.</p>
+                            <a href="#" class="btn btn-outline" onclick="showPage('berita')">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://source.unsplash.com/random/600x400/?conference" alt="Berita" class="news-image">
+                        <div class="news-content">
+                            <div class="news-date">8 Juni 2023</div>
+                            <h3>Kerjasama dengan Organisasi Lain</h3>
+                            <p>Kami menandatangani MoU dengan organisasi X untuk kerjasama dalam program pemberdayaan masyarakat.</p>
+                            <a href="#" class="btn btn-outline" onclick="showPage('berita')">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://source.unsplash.com/random/600x400/?celebration" alt="Berita" class="news-image">
+                        <div class="news-content">
+                            <div class="news-date">1 Juni 2023</div>
+                            <h3>HUT Organisasi ke-5</h3>
+                            <p>Kami merayakan hari ulang tahun organisasi yang ke-5 dengan berbagai acara seru dan penuh makna.</p>
+                            <a href="#" class="btn btn-outline" onclick="showPage('berita')">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Halaman Tentang -->
+    <section id="tentang" class="page">
+        <div class="section">
+            <div class="container">
+                <h1>Tentang HMJ PBA</h1>
+                <p>Organisasi Kami didirikan pada tahun 2018 dengan tujuan untuk menciptakan perubahan positif dalam masyarakat melalui berbagai program dan kegiatan inovatif. Kami percaya bahwa setiap individu memiliki potensi untuk berkontribusi pada pembangunan masyarakat yang lebih baik.</p>
+                
+                <h2>Visi</h2>
+                <p>Menjadi organisasi terdepan dalam menciptakan solusi inovatif untuk masalah sosial dan pemberdayaan masyarakat.</p>
+                
+                <h2>Misi</h2>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Mengembangkan program pemberdayaan masyarakat yang berkelanjutan</li>
+                    <li>Menciptakan wadah untuk pengembangan potensi anggota</li>
+                    <li>Membangun jaringan kerjasama dengan berbagai pihak untuk mencapai tujuan bersama</li>
+                    <li>Mendorong partisipasi aktif masyarakat dalam pembangunan</li>
+                </ul>
+                
+                <h2>Sejarah</h2>
+                <p>Organisasi Kami dimulai dari sekelompok kecil mahasiswa yang memiliki kepedulian terhadap masalah sosial di lingkungan mereka. Dari kegiatan kecil seperti bakti sosial dan penyuluhan kesehatan, organisasi kami terus berkembang hingga saat ini memiliki lebih dari 50 anggota aktif dan telah menjalankan berbagai program besar.</p>
+                
+                <h2>Pencapaian</h2>
+                <p>Beberapa pencapaian yang telah kami raih:</p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Penghargaan Organisasi Teraktif 2022 dari Pemerintah Kota</li>
+                    <li>Program pemberdayaan ekonomi yang telah menjangkau 500 keluarga</li>
+                    <li>Pelatihan keterampilan untuk 1000 pemuda</li>
+                    <li>Kerjasama dengan 15 perusahaan untuk program CSR</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Halaman Struktur Organisasi -->
+    <section id="struktur" class="page">
+        <div class="section">
+            <div class="container">
+                <h1>Kestrukturan HMJ PBA STAI Nurul Iman</h1>
+                <p>Berikut adalah struktur kepengurusan HMJ PBA STAI Nurul Iman periode 2024-2025:</p>
+                
+                <h2>BPH (Badan Pengurus Harian)</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="https://source.unsplash.com/random/600x600/?portrait-man" alt="Ketua" class="member-photo">
+                        <div class="member-info">
+                            <div class="member-name">Salafus Soleh</div>
+                            <div class="member-position">Ketua Umum</div>
+                            <p>Memimpin organisasi dan bertanggung jawab atas semua kegiatan.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="https://source.unsplash.com/random/600x600/?portrait-woman" alt="Wakil" class="member-photo">
+                        <div class="member-info">
+                            <div class="member-name">Muhaimin</div>
+                            <div class="member-position">Wakil Ketua</div>
+                            <p>Mendampingi ketua dan menggantikan ketika ketua berhalangan.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="https://source.unsplash.com/random/600x600/?portrait-man2" alt="Sekretaris" class="member-photo">
+                        <div class="member-info">
+                            <div class="member-name">Andika</div>
+                            <div class="member-position">Sekretaris 1</div>
+                            <p>Mengurus administrasi dan dokumentasi organisasi.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="https://source.unsplash.com/random/600x600/?portrait-woman2" alt="Sekretaris" class="member-photo">
+                        <div class="member-info">
+                            <div class="member-name">Tegar</div>
+                            <div class="member-position">Sekretaris 2</div>
+                            <p>Membantu sekretaris 1 dalam tugas administrasi.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="https://source.unsplash.com/random/600x600/?portrait-man3" alt="Humas" class="member-photo">
+                        <div class="member-info">
+                            <div class="member-name">Zaki</div>
+                            <div class="member-position">Humas 1</div>
+                            <p>Menjalin hubungan dengan pihak eksternal dan media.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="https://source.unsplash.com/random/600x600/?portrait-woman3" alt="Humas" class="member-photo">
+                        <div class="member-info">
+                            <div class="member-name">......</div>
+                            <div class="member-position">Humas 2</div>
+                            <p>Membantu humas 1 dalam tugas hubungan masyarakat.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2>Divisi-divisi</h2>
+                
+                <div class="division">
+                    <h3>Divisi Penelitian dan Pengembangan</h3>
+                    <div class="division-head">
+                        <strong>Ketua Divisi:</strong> ..... (5 anggota)
+                    </div>
+                    <div class="division-members">
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-man4" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">.....</div>
+                                <div class="member-position">Ketua Divisi</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-woman4" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">.......</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-man5" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">......</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-woman5" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">......</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-man6" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">.....</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="division">
+                    <h3>Divisi Forum Diskusi Mahasiswa</h3>
+                    <div class="division-head">
+                        <strong>Ketua Divisi:</strong> ..... (5 anggota)
+                    </div>
+                    <div class="division-members">
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-woman6" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">.......</div>
+                                <div class="member-position">Ketua Divisi</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-man7" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">......</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-woman7" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">......</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-man8" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">......</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-woman8" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">......</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="division">
+                    <h3>Divisi Pendidikan dan Kebahasaan</h3>
+                    <div class="division-head">
+                        <strong>Ketua Divisi:</strong> Dalhar (4 anggota)
+                    </div>
+                    <div class="division-members">
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-man9" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">Dalhar</div>
+                                <div class="member-position">Ketua Divisi</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-woman9" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">Muhamad Taufik Hidayat</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-man10" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">Rohman</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-woman10" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">Vito</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="division">
+                    <h3>Divisi Media dan Informasi</h3>
+                    <div class="division-head">
+                        <strong>Ketua Divisi:</strong> ..... (4 anggota)
+                    </div>
+                    <div class="division-members">
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-woman11" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">......</div>
+                                <div class="member-position">Ketua Divisi</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-man11" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">......</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-woman12" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">......</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-man12" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">......</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="division">
+                    <h3>Divisi Seni dan Budaya</h3>
+                    <div class="division-head">
+                        <strong>Ketua Divisi:</strong> ... (3 anggota)
+                    </div>
+                    <div class="division-members">
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-man13" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">.....</div>
+                                <div class="member-position">Ketua Divisi</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-woman13" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">.....</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://source.unsplash.com/random/600x600/?portrait-man14" alt="Anggota" class="member-photo">
+                            <div class="member-info">
+                                <div class="member-name">......</div>
+                                <div class="member-position">Anggota</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Halaman Kegiatan -->
+    <section id="kegiatan" class="page">
+        <div class="section">
+            <div class="container">
+                <h1>Kegiatan HMJ PBA STAI Nurul Iman</h1>
+                <p>Berikut adalah berbagai kegiatan yang telah dan akan kami laksanakan:</p>
+                
+                <div class="activities-grid">
+                    <div class="activity-card">
+                        <img src="https://source.unsplash.com/random/600x400/?volunteer" alt="Kegiatan" class="activity-image">
+                        <div class="activity-content">
+                            <div class="activity-date">15 Juli 2023</div>
+                            <h3>Bakti Sosial di Desa Terpencil</h3>
+                            <p>Kegiatan bakti sosial akan dilaksanakan di desa terpencil dengan memberikan bantuan sembako, pemeriksaan kesehatan gratis, dan pelatihan keterampilan dasar.</p>
+                            <p><strong>Lokasi:</strong> Desa Sukamaju, Kecamatan Jauh Disana</p>
+                            <p><strong>Waktu:</strong> 08.00 - 15.00 WIB</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <img src="https://source.unsplash.com/random/600x400/?workshop" alt="Kegiatan" class="activity-image">
+                        <div class="activity-content">
+                            <div class="activity-date">22 Juli 2023</div>
+                            <h3>Workshop Kewirausahaan</h3>
+                            <p>Workshop ini bertujuan untuk memberikan pengetahuan dasar tentang kewirausahaan kepada pemuda-pemudi dengan menghadirkan pembicara dari pengusaha sukses lokal.</p>
+                            <p><strong>Lokasi:</strong> Aula Kantor Desa</p>
+                            <p><strong>Waktu:</strong> 09.00 - 12.00 WIB</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <img src="https://source.unsplash.com/random/600x400/?training" alt="Kegiatan" class="activity-image">
+                        <div class="activity-content">
+                            <div class="activity-date">5 Agustus 2023</div>
+                            <h3>Pelatihan Kepemimpinan</h3>
+                            <p>Pelatihan intensif selama 2 hari untuk mengembangkan keterampilan kepemimpinan bagi anggota organisasi dan perwakilan komunitas.</p>
+                            <p><strong>Lokasi:</strong> Wisma Pemuda</p>
+                            <p><strong>Waktu:</strong> 08.00 - 16.00 WIB (2 hari)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <img src="https://source.unsplash.com/random/600x400/?environment" alt="Kegiatan" class="activity-image">
+                        <div class="activity-content">
+                            <div class="activity-date">12 Agustus 2023</div>
+                            <h3>Gerakan Penghijauan</h3>
+                            <p>Kegiatan menanam 1000 pohon di daerah rawan longsor dengan melibatkan masyarakat setempat dan siswa sekolah.</p>
+                            <p><strong>Lokasi:</strong> Lereng Gunung Hijau</p>
+                            <p><strong>Waktu:</strong> 07.00 - 12.00 WIB</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <img src="https://source.unsplash.com/random/600x400/?education" alt="Kegiatan" class="activity-image">
+                        <div class="activity-content">
+                            <div class="activity-date">20 Agustus 2023</div>
+                            <h3>Program Pendidikan Anak</h3>
+                            <p>Program pendidikan non-formal untuk anak-anak kurang mampu dengan fokus pada literasi dasar dan keterampilan hidup.</p>
+                            <p><strong>Lokasi:</strong> Posko Organisasi</p>
+                            <p><strong>Waktu:</strong> Setiap Sabtu, 13.00 - 15.00 WIB</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <img src="https://source.unsplash.com/random/600x400/?health" alt="Kegiatan" class="activity-image">
+                        <div class="activity-content">
+                            <div class="activity-date">27 Agustus 2023</div>
+                            <h3>Penyuluhan Kesehatan</h3>
+                            <p>Penyuluhan tentang pentingnya hidup sehat dan pemeriksaan kesehatan gratis bekerja sama dengan puskesmas setempat.</p>
+                            <p><strong>Lokasi:</strong> Balai Desa Sehat</p>
+                            <p><strong>Waktu:</strong> 09.00 - 14.00 WIB</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2>Kegiatan yang Sudah Dilaksanakan</h2>
+                
+                <div class="activities-grid">
+                    <div class="activity-card">
+                        <img src="https://source.unsplash.com/random/600x400/?event" alt="Kegiatan" class="activity-image">
+                        <div class="activity-content">
+                            <div class="activity-date">10 Juni 2023</div>
+                            <h3>Seminar Pendidikan Karakter</h3>
+                            <p>Seminar tentang pentingnya pendidikan karakter bagi generasi muda dengan peserta dari berbagai sekolah.</p>
+                            <p><strong>Hasil:</strong> 150 peserta, 5 sekolah terlibat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <img src="https://source.unsplash.com/random/600x400/?community" alt="Kegiatan" class="activity-image">
+                        <div class="activity-content">
+                            <div class="activity-date">28 Mei 2023</div>
+                            <h3>Pelatihan Kerajinan Tangan</h3>
+                            <p>Pelatihan membuat kerajinan tangan dari bahan daur ulang untuk ibu-ibu PKK dengan tujuan menciptakan produk bernilai jual.</p>
+                            <p><strong>Hasil:</strong> 30 peserta, 5 produk baru</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Halaman Berita -->
+    <section id="berita" class="page">
+        <div class="section">
+            <div class="container">
+                <h1>Berita Terkini</h1>
+                <p>Update terbaru seputar kegiatan dan perkembangan Organisasi Kami:</p>
+                
+                <div class="news-grid">
+                    <div class="news-card">
+                        <img src="https://source.unsplash.com/random/600x400/?award" alt="Berita" class="news-image">
+                        <div class="news-content">
+                            <div class="news-date">12 Juni 2023</div>
+                            <h3>Organisasi Kami Meraih Penghargaan</h3>
+                            <p>Organisasi kami mendapatkan penghargaan sebagai organisasi teraktif tahun 2023 dari pemerintah daerah dalam acara penghargaan tahunan.</p>
+                            <p>Penghargaan ini diberikan atas kontribusi nyata kami dalam berbagai program pemberdayaan masyarakat selama setahun terakhir.</p>
+                            <a href="#" class="btn btn-outline">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://source.unsplash.com/random/600x400/?signing" alt="Berita" class="news-image">
+                        <div class="news-content">
+                            <div class="news-date">8 Juni 2023</div>
+                            <h3>Kerjasama dengan Organisasi X</h3>
+                            <p>Kami menandatangani nota kesepahaman (MoU) dengan Organisasi X untuk kerjasama dalam program pemberdayaan masyarakat selama 3 tahun ke depan.</p>
+                            <p>Kerjasama ini akan fokus pada pengembangan ekonomi kreatif dan pelatihan keterampilan untuk pemuda.</p>
+                            <a href="#" class="btn btn-outline">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://source.unsplash.com/random/600x400/?anniversary" alt="Berita" class="news-image">
+                        <div class="news-content">
+                            <div class="news-date">1 Juni 2023</div>
+                            <h3>Perayaan HUT ke-5 Organisasi</h3>
+                            <p>Kami merayakan hari ulang tahun organisasi yang ke-5 dengan mengadakan acara syukuran dan refleksi perjalanan organisasi selama ini.</p>
+                            <p>Acara dihadiri oleh anggota, mitra, dan penerima manfaat program kami.</p>
+                            <a href="#" class="btn btn-outline">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://source.unsplash.com/random/600x400/?volunteer2" alt="Berita" class="news-image">
+                        <div class="news-content">
+                            <div class="news-date">25 Mei 2023</div>
+                            <h3>Rekrutmen Anggota Baru</h3>
+                            <p>Organisasi kami membuka pendaftaran anggota baru untuk periode 2023-2024 dengan berbagai divisi yang bisa dipilih.</p>
+                            <p>Pendaftaran dibuka hingga 10 Juni 2023 melalui website kami atau langsung ke sekretariat.</p>
+                            <a href="#" class="btn btn-outline">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://source.unsplash.com/random/600x400/?donation" alt="Berita" class="news-image">
+                        <div class="news-content">
+                            <div class="news-date">18 Mei 2023</div>
+                            <h3>Program Bantuan Pendidikan</h3>
+                            <p>Kami meluncurkan program bantuan pendidikan untuk 50 anak kurang mampu berupa paket sekolah dan pendampingan belajar.</p>
+                            <p>Program ini didukung oleh donatur dan CSR perusahaan mitra kami.</p>
+                            <a href="#" class="btn btn-outline">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card">
+                        <img src="https://source.unsplash.com/random/600x400/?meeting2" alt="Berita" class="news-image">
+                        <div class="news-content">
+                            <div class="news-date">10 Mei 2023</div>
+                            <h3>Rapat Koordinasi dengan Pemerintah</h3>
+                            <p>Tim kami melakukan rapat koordinasi dengan dinas sosial kabupaten untuk menyelaraskan program kerja tahun ini.</p>
+                            <p>Beberapa program mendapatkan dukungan penuh dari pemerintah daerah.</p>
+                            <a href="#" class="btn btn-outline">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Halaman Feedback -->
+    <section id="feedback" class="page">
+        <div class="section">
+            <div class="container">
+                <h1>Formulir Feedback</h1>
+                <p>Silakan isi formulir berikut untuk memberikan masukan, saran, atau pertanyaan kepada kami:</p>
+                
+                <form id="feedbackForm" style="max-width: 600px; margin: 40px auto;">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Nomor Telepon</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subjek</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Pilih subjek...</option>
+                            <option value="saran">Saran</option>
+                            <option value="kritik">Kritik</option>
+                            <option value="pertanyaan">Pertanyaan</option>
+                            <option value="kerjasama">Penawaran Kerjasama</option>
+                            <option value="lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Kirim Feedback</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Tentang Kami</h3>
+                    <p>Organisasi yang berkomitmen untuk menciptakan perubahan positif dalam masyarakat melalui berbagai program dan kegiatan inovatif.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li>Jl. Organisasi No. 123, Kota Kami</li>
+                        <li>Email: info@organisasikami.org</li>
+                        <li>Telepon: (021) 12345678</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="#" onclick="showPage('index')">Beranda</a></li>
+                        <li><a href="#" onclick="showPage('tentang')">Tentang Kami</a></li>
+                        <li><a href="#" onclick="showPage('struktur')">Struktur Organisasi</a></li>
+                        <li><a href="#" onclick="showPage('kegiatan')">Kegiatan</a></li>
+                        <li><a href="#" onclick="showPage('berita')">Berita</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Media Sosial</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook">f</i></a>
+                        <a href="#"><i class="fab fa-twitter">t</i></a>
+                        <a href="#"><i class="fab fa-instagram">i</i></a>
+                        <a href="#"><i class="fab fa-youtube">y</i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Organisasi Kami. Semua Hak Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript untuk navigasi satu halaman
+        function showPage(pageId) {
+            // Sembunyikan semua halaman
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Tampilkan halaman yang dipilih
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update menu navigasi aktif
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('onclick') === `showPage('${pageId}')`) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll ke atas
+            window.scrollTo(0, 0);
+            
+            // Tutup menu mobile jika terbuka
+            document.getElementById('mainNav').classList.remove('active');
+        }
+        
+        // Toggle menu mobile
+        function toggleMenu() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('active');
+        }
+        
+        // Form submission
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih atas feedback Anda! Kami akan segera menindaklanjuti pesan Anda.');
+            this.reset();
+            showPage('index');
+        });
+        
+        // Set halaman aktif saat pertama kali load
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('index');
+        });
+    </script>
+</body>
+</html>
