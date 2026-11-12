@@ -52,16 +52,32 @@
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-size: 24px;
             font-weight: bold;
             color: white;
             text-decoration: none;
         }
         
-        .logo span {
-            color: var(--primary-color);
+        .logo img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            flex-shrink: 0;
         }
         
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.3;
+        }
+
+        .logo-text span {
+            color: var(--primary-color)
+        }
+
         nav ul {
             display: flex;
             list-style: none;
@@ -459,7 +475,14 @@
 <body>
     <header>
         <div class="container header-container">
-            <a href="#" class="logo" onclick="showPage('index')">Profil<span> HMPS PBA IAI NURUL IMAN</span></a>
+            <a href="#" class="logo" onclick="showPage('index')">
+                <img src="images/logo-hmps-pba.png" alt="Logo HMPS PBA">
+
+                <div class="logo-text">
+                    <span>HMPS PBA</span>
+                    <small>IAI NURUL IMAN</small>
+                </div>
+            </a>
             <div class="hamburger" onclick="toggleMenu()">☰</div>
             <nav id="mainNav">
                 <ul>
