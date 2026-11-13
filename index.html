@@ -34,6 +34,21 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+
+        #struktur h1 {
+            color: var(--secondary-color);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        #struktur > .section > .container > p {
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
         
         header {
             background-color: var(--secondary-color);
@@ -264,44 +279,76 @@
         
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
         
         .team-member {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 5px 18px rgba(44, 62, 80, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
+            border: 1px solid #eaf1f8;
         }
         
         .team-member:hover {
-            transform: translateY(-10px);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(44, 62, 80, 0.13);
         }
-        
+
+        .chairman-card {
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.15);
+            grid-column: 1 / -1;
+            width: min(100%, 280px);
+            justify-self: center;
+        }
+
+        .chairman-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 30px rgba(52, 152, 219, 0.22);
+        }
+
         .member-photo {
             width: 100%;
             height: 250px;
             object-fit: cover;
+            object-position: center top;
+            display: block;
+            background-color: #eaf3fb;
         }
         
         .member-info {
-            padding: 20px;
+            padding: 22px 18px;
+            text-align: center;
         }
         
         .member-name {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 7px;
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            line-height: 1.5;
         }
         
         .member-position {
             color: var(--primary-color);
-            font-weight: 500;
-            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .team-member p {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-top: 8px;
+            margin-bottom: 0;
+            text-align: center;
         }
         
         .division {
@@ -310,17 +357,55 @@
         
         .division-members {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 250px));
+            gap: 22px;
+            margin-top: 20px;
         }
         
         .division-head {
-            background-color: var(--light-color);
-            padding: 15px;
+            background-color: #eaf3fb;
+            padding: 16px 20px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
+            border-left: 4px solid var(--primary-color);
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
-        
+
+        .division-head strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .division-description {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-top: 10px;
+            margin-bottom: 18px;
+            text-align: justify;
+            max-width: 900px;
+        }
+            
+        .division h3 {
+            color: var(--secondary-color);
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaf3fb;
+        }
+
+        #struktur h2 {
+            color: var(--secondary-color);
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #eaf3fb;
+        }
+            
         .activities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -668,6 +753,7 @@
             }
 
             .team-grid,
+            .division-members,
             .activities-grid,
             .news-grid,
             .about-values {
@@ -757,7 +843,7 @@
                     </div>
                     
                     <div class="activity-card">
-                        <img src="https://source.unsplash.com/random/600x400/?volunteer" alt="Kegiatan" class="activity-image">
+                        <img src="images/foto-pelatihan-debat.jpg" alt="Kegiatan" class="activity-image">
                         <div class="activity-content">
                             <div class="activity-date">10 Juni 2023</div>
                             <h3>Pelatihan Debat Bahasa Arab</h3>
@@ -892,12 +978,18 @@
     <section id="struktur" class="page">
         <div class="section">
             <div class="container">
-                <h1>Kestrukturan HMJ PBA STAI Nurul Iman</h1>
-                <p>Berikut adalah struktur kepengurusan HMJ PBA STAI Nurul Iman periode 2025-2026:</p>
+                <div class="structure-intro">
+                    <span class="about-label">KEPENGURUSAN ORGANISASI</span>
+                    <h1>Struktur Organisasi HMPS PBA</h1>
+                    <p>Berikut merupakan susunan kepengurusan Himpunan Mahasiswa
+                       Program Studi Pendidikan Bahasa Arab (HMPS PBA)
+                       IAI Nurul Iman periode 2025–2026.
+                    </p>
+                </div>
                 
                 <h2>BPH (Badan Pengurus Harian)</h2>
                 <div class="team-grid">
-                    <div class="team-member">
+                    <div class="team-member chairman-card">
                         <img src="soleh.jpg" alt="Ketua" class="member-photo">
                         <div class="member-info">
                             <div class="member-name">Sastadhy Evan Sulery</div>
@@ -947,9 +1039,17 @@
                 
                 <div class="division">
                     <h3>Divisi Penelitian dan Pengembangan</h3>
+
+                    <p class="division-description">
+                        Bertanggung jawab dalam mengembangkan budaya akademik,
+                        meningkatkan kemampuan intelektual, serta mendorong mahasiswa
+                        untuk aktif dalam kegiatan penelitian dan pengembangan keilmuan.
+                    </p>
+                    
                     <div class="division-head">
                         <strong>Ketua Divisi:</strong> M. Rohmanudin (5 anggota)
                     </div>
+
                     <div class="division-members">
                         <div class="team-member">
                             <img src="https://source.unsplash.com/random/600x600/?portrait-man4" alt="Anggota" class="member-photo">
@@ -991,6 +1091,14 @@
                 
                 <div class="division">
                     <h3>Divisi Forum Diskusi Mahasiswa</h3>
+
+                    <p class="division-description">
+                        Bertanggung jawab dalam membangun ruang diskusi yang aktif,
+                        kritis, dan konstruktif sebagai wadah pertukaran gagasan,
+                        pengembangan wawasan, serta peningkatan kemampuan berpikir
+                        analitis mahasiswa.
+                    </p>
+
                     <div class="division-head">
                         <strong>Ketua Divisi:</strong> fahri (5 anggota)
                     </div>
@@ -1035,6 +1143,14 @@
                 
                 <div class="division">
                     <h3>Divisi Pendidikan dan Kebahasaan</h3>
+
+                    <p class="division-description">
+                        Bertanggung jawab dalam mengembangkan kemampuan akademik
+                        dan keterampilan berbahasa Arab mahasiswa melalui kegiatan
+                        edukatif, pelatihan kebahasaan, serta program penguatan
+                        kompetensi pendidikan dan bahasa Arab.
+                    </p>
+
                     <div class="division-head">
                         <strong>Ketua Divisi:</strong> Dalhar (4 anggota)
                     </div>
@@ -1072,6 +1188,14 @@
                 
                 <div class="division">
                     <h3>Divisi Media dan Informasi</h3>
+
+                    <p class="division-description">
+                        Bertanggung jawab dalam mengelola informasi, publikasi,
+                        dokumentasi, serta media komunikasi organisasi guna
+                        menyampaikan berbagai kegiatan dan informasi HMPS PBA
+                        kepada mahasiswa maupun masyarakat luas.
+                    </p>
+
                     <div class="division-head">
                         <strong>Ketua Divisi:</strong> Gilang Arya Saputra (4 anggota)
                     </div>
@@ -1109,6 +1233,14 @@
                 
                 <div class="division">
                     <h3>Divisi Seni dan Budaya</h3>
+
+                    <p class="division-description">
+                        Bertanggung jawab dalam mengembangkan kreativitas,
+                        minat, dan bakat mahasiswa di bidang seni dan budaya
+                        melalui kegiatan apresiasi, ekspresi, serta pelestarian
+                        nilai-nilai budaya yang positif.
+                    </p>
+
                     <div class="division-head">
                         <strong>Ketua Divisi:</strong>M. Abdul Sholeh (2 anggota)
                     </div>
@@ -1173,12 +1305,12 @@
                     </div>
                     
                     <div class="activity-card">
-                        <img src="https://source.unsplash.com/random/600x400/?environment" alt="Kegiatan" class="activity-image">
+                        <img src="images/fotopemilihanketua.jpg" alt="Kegiatan" class="activity-image">
                         <div class="activity-content">
                             <div class="activity-date">12 Agustus 2023</div>
-                            <h3>Pemilihan Umum </h3>
-                            <p>Kegiatan menanam 1000 pohon di daerah rawan longsor dengan melibatkan masyarakat setempat dan siswa sekolah.</p>
-                            <p><strong>Lokasi:</strong> Lereng Gunung Hijau</p>
+                            <h3>Pemilihan Ketua Baru</h3>
+                            <p></p>
+                            <p><strong>Lokasi:</strong> Institut Agama Islam Nurul Iman </p>
                         </div>
                     </div>
                     
@@ -1317,7 +1449,11 @@
                 <h1>Formulir Feedback</h1>
                 <p>Silakan isi formulir berikut untuk memberikan masukan, saran, atau pertanyaan kepada kami:</p>
                 
-                <form id="feedbackForm" style="max-width: 600px; margin: 40px auto;">
+                <form id="feedbackForm"
+                    action:="https://formspree.io/f/mvkazkvg"
+                    method="POST" 
+                    style="max-width: 600px; margin: 40px auto;">
+                    
                     <div class="form-group">
                         <label for="name">Nama Lengkap</label>
                         <input type="text" id="name" name="name" required>
