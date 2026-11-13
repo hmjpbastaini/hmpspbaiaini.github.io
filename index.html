@@ -1453,7 +1453,7 @@
                     action:="https://formspree.io/f/mvkazkvg"
                     method="POST" 
                     style="max-width: 600px; margin: 40px auto;">
-                    
+
                     <div class="form-group">
                         <label for="name">Nama Lengkap</label>
                         <input type="text" id="name" name="name" required>
@@ -1566,14 +1566,6 @@
             const nav = document.getElementById('mainNav');
             nav.classList.toggle('active');
         }
-        
-        // Form submission
-        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Terima kasih atas feedback Anda! Kami akan segera menindaklanjuti pesan Anda.');
-            this.reset();
-            showPage('index');
-        });
         
         // Set halaman aktif saat pertama kali load
         document.addEventListener('DOMContentLoaded', function() {
