@@ -464,7 +464,139 @@
             color: #bdc3c7;
             font-size: 0.9rem;
         }
+
+        .about-values {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .value-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+            border-top: 4px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.15);
+        }
+
+        .value-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            font-size: 28px;
+            margin-bottom: 15px;
+            background-color: #eaf3fb;
+            border-radius: 12px;
+        }
+
+        .value-card h2 {
+            color: var(--secondary-color);
+            font-size: 1.7rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .value-card p,
+        .value-card li {
+            color: var(--secondary-color);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .value-card ul {
+            padding-left: 20px;
+        }
+
+        .value-card li {
+            margin-bottom: 10px
+        }
+
+        .about-intro {
+            background: #eaf3fb;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .about-label {
+            display: inline-block;
+            color: var(--primary-color);
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .about-intro h1 {
+            color: var(--secondary-color);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-intro p {
+            color: var(--secondary-color);
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        .about-history {
+            background: #eaf3fb;
+            padding: 35px 40px;
+            border-radius: 12px;
+            margin-top: 30px;
+            margin-bottom: 40px;
+            border-left: 5px solid var(--primary-color);
+            transition: transform 0.3 ease, box-shadow 0.3s ease;
+        }
+
+        .about-history:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.15);
+        }
         
+        .history-heading h2 {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .history-heading h2::after {
+            content: "";
+            display: block;
+            width: 65px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 5px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .about-history p {
+            color: var(--secondary-color);
+            font-size: 1rem;
+            line-height: 1.9;
+            text-align: justify;
+            margin-bottom: 0;
+            letter-spacing: 0.2px;
+        }
+
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: row;
@@ -537,8 +669,33 @@
 
             .team-grid,
             .activities-grid,
-            .news-grid {
+            .news-grid,
+            .about-values {
                 grid-template-columns: 1fr;
+            }
+
+            .about-label {
+                display: inline-block;
+                color: #b68b2c;
+                font-size: 13px;
+                font-weight: bold;
+                letter-spacing: 2px;
+            }
+
+            .about-intro {
+                padding: 25px 20px;
+            }
+
+            .about-intro h1 {
+                font-size: 1.8rem;
+            }
+
+            .about_history {
+                padding: 25px 20px;
+            }
+
+            .history-heading h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -664,41 +821,72 @@
     <section id="tentang" class="page">
         <div class="section">
             <div class="container">
-                <h1>Tentang HMJ PBA</h1>
-                <p>Organisasi Kami didirikan pada tahun 2018 dengan tujuan untuk menciptakan perubahan positif dalam masyarakat melalui berbagai program dan kegiatan inovatif. Kami percaya bahwa setiap individu memiliki potensi untuk berkontribusi pada pembangunan masyarakat yang lebih baik.</p>
-                
-                <h2>Visi</h2>
-                <p>Menjadikan program studi yang unggul dalam pengkajian ilmu pendidikan terutama Pendidikan Bahasa Arab berdasarkan Nilai-nilai ke-Islaman demi tewujudnya mahasiswa yang bertanggung jawab, kreatif, trampil, dan mandiri.
-</p>
-                
-                <h2>Misi</h2>
-                <ul style="margin-left: 20px; margin-bottom: 20px;">
-                    <li>Menyelenggarakan program kerja HMJ PBA STAINI yang unggul, kompetitif, dan professional.
-                    </li>
-                    <li>Melaksanakan Kegiatan yang menjadikan mahasiswa Pendidikan Bahasa Arab berkompeten dan memiliki kepribadian yang islami.
-                    </li>
-                    <li>Memadukan ilmu pengetahuan teknologi untuk meningkatkan kreativitas mahasiswa Pendidikan Bahasa Arab.
-                    </li>
-                    <li>Menanamkan rasa tanggung jawab melalui pembelajaran dan pembinaan.
-                    </li>
-                    <li>Mengoptimalkan proses pembinaan dalam menyalurkan minat dan bakat.
-                    </li>
-                </ul>
-                
-                <h2>Sejarah</h2>
-                <p>Organisasi Kami dimulai dari sekelompok kecil mahasiswa yang memiliki kepedulian terhadap masalah sosial di lingkungan mereka. Dari kegiatan kecil seperti bakti sosial dan penyuluhan kesehatan, organisasi kami terus berkembang hingga saat ini memiliki lebih dari 50 anggota aktif dan telah menjalankan berbagai program besar.</p>
-                
-                <h2>Pencapaian</h2>
-                <p>Beberapa pencapaian yang telah kami raih:</p>
-                <ul style="margin-left: 20px; margin-bottom: 20px;">
-                    <li>Penghargaan Organisasi Teraktif 2022 dari Pemerintah Kota</li>
-                    <li>Program pemberdayaan ekonomi yang telah menjangkau 500 keluarga</li>
-                    <li>Pelatihan keterampilan untuk 1000 pemuda</li>
-                    <li>Kerjasama dengan 15 perusahaan untuk program CSR</li>
-                </ul>
+
+                <!-- Profil Organisasi -->
+                <div class="about-intro">
+                    <span class="about-label">PROFIL ORGANISASI</span>
+                    <h1>HMPS Pendidikan Bahasa Arab</h1>
+
+                    <p>
+                        Himpunan Mahasiswa Program Studi Pendidikan Bahasa Arab (HMPS PBA) Institut Agama Islam Nurul Iman merupakan organisasi kemahasiswaan yang menjadi wadah bagi mahasiswa untuk mengembangkan potensi, kreativitas, intelektualitas, serta keterampilan dalam bidang pendidikan dan bahasa Arab.
+                    </p>
+                    <p>
+                         Melalui berbagai kegiatan akademik, kebahasaan, keorganisasian, dan pengembangan minat bakat, HMPS PBA berupaya membentuk mahasiswa yang aktif, berwawasan luas, berkarakter Islami, dan mampu memberikan kontribusi positif bagi lingkungan kampus maupun masyarakat.
+                    </p>
+                </div>
+
+                <!-- Visi dan Misi -->
+                <div class="about-values">
+
+                    <div class="value-card">
+                        <div class="value-icon">🎯</div>
+                        <h2>Visi</h2>
+                        <p>
+                            Menjadikan program studi yang unggul dalam pengkajian ilmu pendidikan, terutama Pendidikan Bahasa Arab berdasarkan nilai-nilai keislaman, demi terwujudnya mahasiswa yang bertanggung jawab, kreatif, terampil, dan mandiri.
+                        </p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-icon">📚</div>
+                        <h2>Misi</h2>
+                        <ul>
+                            <li>Menyelenggarakan program kerja HMPS PBA yang unggul, kompetitif, dan profesional.</li>
+                            <li>Melaksanakan kegiatan untuk membentuk mahasiswa PBA yang kompeten dan berkepribadian Islami.</li>
+                            <li>Memadukan ilmu pengetahuan dan teknologi untuk meningkatkan kreativitas mahasiswa.</li>
+                            <li>Menanamkan rasa tanggung jawab melalui pembelajaran dan pembinaan.</li>
+                            <li>Mengoptimalkan pembinaan dalam menyalurkan minat dan bakat mahasiswa.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- Sejarah Organisasi -->
+                <div class="about-history">
+
+                    <div class="history-heading">
+                        <span class="about-label">PERJALANAN ORGANISASI</span>
+                        <h2>Sejarah HMPS PBA</h2>
+                    </div>
+
+                    <p>
+                        Himpunan Mahasiswa Program Studi Pendidikan Bahasa Arab
+                        (HMPS PBA) IAI Nurul Iman merupakan organisasi
+                        kemahasiswaan yang menjadi wadah bagi mahasiswa dalam
+                        mengembangkan potensi akademik, kemampuan berbahasa Arab,
+                        serta keterampilan berorganisasi. Kehadiran HMPS PBA
+                        diharapkan mampu menjadi ruang kolaborasi, pengembangan
+                        intelektual, dan penguatan solidaritas mahasiswa Pendidikan
+                        Bahasa Arab. Melalui berbagai program kerja dan kegiatan
+                        organisasi, HMPS PBA terus berupaya memberikan kontribusi
+                        positif bagi perkembangan program studi dan lingkungan kampus.
+                    </p>
+
+                </div>
+
             </div>
-        </div>
-    </section>
+        </div>    
+    </section>    
+
 
     <!-- Halaman Struktur Organisasi -->
     <section id="struktur" class="page">
@@ -965,7 +1153,7 @@
                     </div>
                     
                     <div class="activity-card">
-                        <img src="images/fotokba.JPG" alt="Kegiatan" class="activity-image">
+                        <img src="images/fotokba.jpg" alt="Kegiatan" class="activity-image">
                         <div class="activity-content">
                             <div class="activity-date">22 Juli 2023</div>
                             <h3>Kemah Bahasa Arab</h3>
