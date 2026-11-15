@@ -784,6 +784,81 @@
                 font-size: 1.5rem;
             }
         }
+        
+        .feedback-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 35, 55, 0.55);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 9999;
+        }
+
+        .feedback-overlay[hidden] {
+            display: none !important;
+        }
+
+        .feedback-popup {
+            width: 100%;
+            max-width: 420px;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 35px 28px;
+            text-align: center;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+            animation: feedbackAppear 0.3s ease;
+        }
+
+        .feedback-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: #eaf3fb;
+            color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .feedback-popup h2 {
+            color: var(--secondary-color);
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+        }
+
+        .feedback-popup p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        .feedback-close {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .feedback-close:hover {
+            background: #2980b9;
+        }
+
+        @keyframes feedbackAppear {
+            from { opacity: 0; transform: translateY(15px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
     </style>
 </head>
 <body>
@@ -990,7 +1065,7 @@
                 <h2>BPH (Badan Pengurus Harian)</h2>
                 <div class="team-grid">
                     <div class="team-member chairman-card">
-                        <img src="images/sastadhy.jpg" alt="Ketua" class="member-photo">
+                        <img src="soleh.jpg" alt="Ketua" class="member-photo">
                         <div class="member-info">
                             <div class="member-name">Sastadhy Evan Sulery</div>
                             <div class="member-position">Ketua Umum</div>
@@ -1435,7 +1510,24 @@
                 <h1>Formulir Feedback</h1>
                 <p>Silakan isi formulir berikut untuk memberikan masukan, saran, atau pertanyaan kepada kami:</p>
                 
-                <p id="feedbackStatus" role="status" aria-live="polite" hidden></p>
+                <div id="feedbackOverlay" Class="feedback-overlay" hidden>
+                    <div class="feedback-popup" role="alertdialog" aria-modal="true" aria-labelledby="feedbackTitle">
+                        <div id="feedbackIcon" class="feedback-icon">
+                            <span>✔️</span>
+                        </div>
+
+                    <h2 id="feedbackTitle">Feedback Berhasil Dikirim</h2>
+
+                    <p id="feedbackMessage">
+                        Terima kasih telah memberikan masukan kepada HMPS PBA.
+                        Pesan kamu telah kami terima.
+                    </p>
+
+                    <button type="button" id="feedbackClose" class="feedback-close">
+                        Tutup
+                    </button>
+                </div>
+            </div>
 
                 <form id="feedbackForm"
                     action="https://formspree.io/f/mvkazkvg"
@@ -1556,49 +1648,67 @@
         }
 
         // Form submission dengan Formspree
-        document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+        const feedbackForm = document.getElementById('feedbackForm');
+        const feedbackOverlay = document.getElementById('feedbackOverlay');
+        const feedbackTitle = document.getElementById('feedbackTitle');
+        const feedbackMessage = document.getElementById('feedbackMessage');
+        const feedbackIcon = document.getElementById('feedbackIcon');
+        const feedbackClose = document.getElementById('feedbackClose');
+
+        function showFeedbackPopup(success) {
+            if (success) {
+                feedbackIcon.innerHTML = '<span>✓</span>';
+                feedbackTitle.textContent = 'Feedback Berhasil Dikirim!';
+                feedbackMessage.textContent =
+                    'Terima kasih telah memberikan masukan kepada HMPS PBA. Pesan kamu telah kami terima.';
+                feedbackClose.textContent = 'Tutup';
+            } else {
+                feedbackIcon.innerHTML = '<span>!</span>';
+                feedbackTitle.textContent = 'Pengiriman Gagal';
+                feedbackMessage.textContent =
+                    'Maaf, pesan belum berhasil dikirim. Silakan periksa koneksi internet dan coba kembali.';
+                feedbackClose.textContent = 'Tutup';
+            }
+
+            feedbackOverlay.hidden = false;
+            feedbackClose.focus();
+        }
+
+        // Mengirim feedback
+        feedbackForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            const form = this;
-            const status = document.getElementById('feedbackStatus');
-            const submitButton = form.querySelector('button[type="submit"]');
+
+            const submitButton = this.querySelector('button[type="submit"]');
 
             submitButton.disabled = true;
             submitButton.textContent = 'Mengirim...';
 
             try {
-                const response = await fetch(form.action, {
+                const response = await fetch(this.action, {
                     method: 'POST',
-                    body: new FormData(form),
+                    body: new FormData(this),
                     headers: {
                         'Accept': 'application/json'
                     }
                 });
 
                 if (response.ok) {
-                    status.textContent = 'Terima kasih! Feedback Anda berhasil dikirim.';
-                    status.style.color = '#15803d';
-                    status.hidden = false;
-
-                    form.reset();
+                    this.reset();
+                    showFeedbackPopup(true);
                 } else {
-                    status.textContent = 'Maaf, feedback gagal dikirim. Silakan coba kembali.';
-                    status.style.color = '#dc2626';
-                    status.hidden = false;
+                    showFeedbackPopup(false);
                 }
             } catch (error) {
-                status.textContent = 'Terjadi kesalahan koneksi. Silakan coba kembali.';
-                status.style.color = '#dc2626';
-                status.hidden = false;
+                showFeedbackPopup(false);
             } finally {
                 submitButton.disabled = false;
                 submitButton.textContent = 'Kirim Feedback';
             }
-        });  
-        
-        // Set halaman aktif saat pertama kali load
-        document.addEventListener('DOMContentLoaded', function() {
-            showPage('index');
+        });
+
+        // Tombol menutup notifikasi
+        feedbackClose.addEventListener('click', function() {
+            feedbackOverlay.hidden = true;
         });
     </script>
 </body>
